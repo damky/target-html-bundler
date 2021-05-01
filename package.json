@@ -4,17 +4,46 @@
   "description": "bundles modern react workflow to es5 compatible iife functions wrapped in html that you can add to adobe target html offers.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "prettier-eslint '**/*.js' --write",
+    "pretest": "npm run lint:fix",
+    "prestart": "npm run lint:fix",
+    "prebuild": "rimraf dist && npm run lint:fix",
+    "build": "rollup --config"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/damky/target-html-bundler.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "react",
+    "bundler",
+    "es5 compatible",
+    "exporter"
+  ],
+  "author": "Doug McKay",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/damky/target-html-bundler/issues"
   },
-  "homepage": "https://github.com/damky/target-html-bundler#readme"
+  "homepage": "https://github.com/damky/target-html-bundler#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-react": "^7.13.13",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.23.2",
+    "prettier": "^2.2.1",
+    "prettier-eslint": "^12.0.0",
+    "prettier-eslint-cli": "^5.0.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.46.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  }
 }
