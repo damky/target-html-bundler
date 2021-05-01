@@ -1,0 +1,20 @@
+{
+  "name": "target-html-bundler",
+  "version": "1.0.0",
+  "description": "bundles modern react workflow to es5 compatible iife functions wrapped in html that you can add to adobe target html offers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damky/target-html-bundler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damky/target-html-bundler/issues"
+  },
+  "homepage": "https://github.com/damky/target-html-bundler#readme"
+}
