@@ -1,12 +1,17 @@
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.enable": true,
-  "prettier.useEditorConfig": true,
-  "prettier.eslintIntegration": true,
+  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.lintTask.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.organizeImports": true,
+    "source.fixAll.eslint": true
   },
-  "editor.formatOnSaveMode": "file",
-  "eslint.format.enable": true
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": false
+    }
+  }
 }

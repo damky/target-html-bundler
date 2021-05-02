@@ -1,16 +1,50 @@
-import babel from 'rollup-plugin-babel'
-import resolve from 'rollup-plugin-node-resolve'
+import alias from '@rollup/plugin-alias'
+import babel from '@rollup/plugin-babel'
+import commonjs from '@rollup/plugin-commonjs'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
+import livereload from 'rollup-plugin-livereload'
+import serve from 'rollup-plugin-serve'
+import { terser } from 'rollup-plugin-terser'
 
 export default {
   input: 'src/index.js',
   output: {
     file: 'dist/bundle.js',
-    format: 'iife'
+    format: 'iife',
+    sourcemap: true,
+    plugins: terser()
   },
   plugins: [
-    resolve(),
+    alias({
+      entries: [
+        { find: 'react', replacement: 'preact/compat' },
+        { find: 'react-dom', replacement: 'preact/compat' }
+      ]
+    }),
+    nodeResolve({
+      extensions: ['.js']
+    }),
+    ["@babel/plugin-transform-react-jsx", {
+      "pragma": "h",
+      "pragmaFrag": "Fragment",
+    }],
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      preventAssignment: true
+    }),
     babel({
-      exclude: 'node_modules/**'
-    })
+      presets: ['@babel/preset-react'],
+      babelHelpers: 'inline'
+    }),
+    commonjs(),
+    serve({
+      open: true,
+      verbose: true,
+      contentBase: ['', 'public'],
+      host: 'localhost',
+      port: 3000
+    }),
+    livereload({ watch: 'dist' })
   ]
 }
