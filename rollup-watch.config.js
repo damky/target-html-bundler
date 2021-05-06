@@ -1,4 +1,3 @@
-import alias from '@rollup/plugin-alias'
 import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
@@ -15,12 +14,6 @@ export default {
     plugins: terser()
   },
   plugins: [
-    alias({
-      entries: [
-        { find: 'react', replacement: 'preact/compat' },
-        { find: 'react-dom', replacement: 'preact/compat' }
-      ]
-    }),
     nodeResolve({
       extensions: ['.js']
     }),
@@ -30,7 +23,8 @@ export default {
     }),
     babel({
       presets: ['@babel/preset-react'],
-      babelHelpers: 'inline'
+      babelHelpers: 'inline',
+      babelrc: false
     }),
     commonjs(),
     serve({
