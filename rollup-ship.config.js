@@ -4,11 +4,12 @@ import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import { terser } from 'rollup-plugin-terser'
+// import typescript from '@rollup/plugin-typescript'
 
 export default {
   input: 'src/index.js',
   output: {
-    file: 'dist/bundle.js',
+    file: 'dist/ship/bundle.js',
     format: 'iife',
     plugins: terser()
   },
@@ -26,6 +27,7 @@ export default {
       'process.env.NODE_ENV': JSON.stringify('production'),
       preventAssignment: true
     }),
+    // typescript(),
     babel({
       presets: ['@babel/preset-react', '@babel/preset-env'],
       babelHelpers: 'inline'
