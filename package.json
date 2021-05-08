@@ -7,7 +7,9 @@
     "prestart": "rimraf dist",
     "start": "rollup -c rollup-watch.config.js -w",
     "prebuild": "rimraf dist",
-    "build": "rollup -c rollup.config.js"
+    "build": "rollup -c rollup.config.js",
+    "preship": "rimraf dist",
+    "ship": "rollup -c rollup-ship.config.js"
   },
   "repository": {
     "type": "git",
